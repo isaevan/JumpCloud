@@ -33,8 +33,10 @@ $ curl http://127.0.0.1:8088/stats
 ● No additional password requests should be allowed when shutdown is pending.
 
 ###Steps to run the test
-
-1. npm i protractor -g.
-2. npm install jasmine
-3. npm install //download all dependencies from package.json file run from package.json directory
-4. Cmd to run the tests: protractor conf/conf.js
+1. $ npm install -g npm@latest
+2. $ npm i protractor -g.  
+3. $ npm install jasmine
+4. $ npm install 
+5. $ webdriver-manager start
+6. $ webdriver-manager update 
+7. Cmd to  run the tests: $ protractor conf/conf.js
