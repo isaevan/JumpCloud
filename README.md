@@ -34,7 +34,7 @@ $ curl http://127.0.0.1:8088/stats
 
 ###Steps to run the test
 
-npm i protractor -g.
-npm install jasmine
-npm install //download all dependencies from package.json file run from package.json directory
-Cmd to run the tests: protractor conf/conf.js
+1. npm i protractor -g.
+2. npm install jasmine
+3. npm install //download all dependencies from package.json file run from package.json directory
+4. Cmd to run the tests: protractor conf/conf.js
