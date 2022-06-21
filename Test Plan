@@ -1,0 +1,37 @@
+Scope of the tests: Verify the application supports three endpoints.
+
+
+Test cases:
+##Verify POST request to “/hash” endpoint
+1."should verify POST request to  “/hash” endpoint with Header name accepts a password and return a job identifier."
+2."should verify POST request to  “/hash” endpoint without Header name accepts a password and return a job identifier."
+3."should verify POST request to  “/hash” endpoint with incorrect value parameters are not allowed."
+4."should verify timing response to return job identifier from POST request to /hash endpoint"
+
+
+##Verify GET request to “/hash” endpoint
+1."should verify GET request to “/hash” endpoint accepts job identifier and returned base64 encoded password hash for the corresponding POST request"
+2."should verify GET request to “/hash” endpoint without Header name accepts job identifier and returned base64 encoded password hash for the corresponding POST request
+3."should verify GET request to “/hash” endpoint doesn't allowed unexistent jobIdentifier."
+4."should verify hashing algorithm is SHA512."
+
+##Verify GET request to /stats endpoint
+1."should verify GET request to "/stats" endpoint return totalRequest value with AverageTime value
+2."should verify a GET request to '/stats' endpoint should accept no data."
+
+
+##Verify POST request to “/hash” endpoint
+1."should verify during software shutdown process it  should allow any in-flight password hashing to complete"
+2."should verify shutdown request returned status code 200."
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
