@@ -1,0 +1,11 @@
+### Extra validation required
+1. Response/ Request Headers for a POST request  to /hash endpoint (accepts null as a Header name( key value). Curl accepts different Headers while POSTMAN needs specific Headers
+2. Payload for a POST request  to /hash endpoint (AC is not clear what is acceptable for request body, length, special characters, also accepts empty  and null values )
+3. Response Body for job identifier (valid response headers and also negative)
+4. Response data structure 
+5. Validation of Stats info (for example compare with database info)
+6. Handling Error Messages
+7. Need to define timing response for job identifier, in AC refers to  immediately (specific range required for testing).
+8. From AC need clarification: "It should then wait 5 seconds and compute the password hash."5 seconds takes to return jobIdentifier, seems no need to wait after. 
+user able to perform GET request to retrieve encoded password after getting jobIdentifier
+9. Hard to verify No additional password requests should be allowed when shutdown is pending. Shutdown process so fast, not sure if I was able to cover this AC
