@@ -1,0 +1,72 @@
+#Test Results:
+
+### Automation testResults (Protractor  with Jasmine BDD using axios and xios-curlirize libraries)
+automation doesn't support Header Request without Header Name (per example suggested to use following Header ' -H "application/json"' failed to send request without Header Name, need clarification in AC) 
+
+
+PASS: "should verify application supports three endpoints." 
+
+PASS: "should verify hashing algorithm is SHA512."
+Note: actualResult based on Base 64 encoding of the hash output bytes ( output of the Base 64 encoding of the hash output text(in uppercase hexadecimal) is different)
+
+FAIL: "should verify POST request to  “/hash” endpoint with incorrect value parameters are not allowed."
+ExpectedResult response.statusCode =400;ActualResult = response.statusCode =200
+Application accepts incorrect payload
+TestData: {" ":"angrymonkey"},{"p-d ":"angrymonkey1"}, {" ":" "}, {" ":null}, {"%$^#^":"angrymonkey"} 
+for incorrect payload most of the time return value== "z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg=="
+
+FAIL:"should verify a GET request to '/stats' endpoint should accept no data."
+accepts body request also POST request to '/stats' endpoint
+
+FAIL: "should verify a GET request to '/stats' increment totalRequest value.
+Doesn't count A GET request to  to /hash endpoint
+
+PASS: "should verify software able to process multiple connections simultaneously."
+
+FAIL: "should verify POST request to  “/hash” endpoint  without Header name."
+Expected: response.statusCode = 200; response.body: jobIdentifier
+Actual result   response.statusCode =400; response.body = Header name must be a valid HTTP token
+***per example suggested to use following Header ' -H "application/json"' failed to send request without Header Name, need clarification in AC 
+
+FAIL: "should verify GET request to “/hash” endpoint without Header name."
+
+PASS: "should verify GET request to “/hash” endpoint doesn't allowed unexistent jobIdentifier."
+
+PASS: "should verify POST request to  “/hash” endpoint with Header name accepts a password and return a job identifier."
+TestData: headers :  { 
+            "Accept":"application/json",
+            "Content-Type":"application/x-www-form-urlencoded" }                       
+          
+FAIL: "should verify shutdown request returned status code 200."
+ExpectedStatus: 200, ActualStatus null (empty reponse)
+            
+            
+
+###Functional testing (terminal using curl)
+PASS: "should verify POST request to  “/hash” endpoint accepts a password and return a job identifier."
+curl accept following format: '-H "application/json"'
+
+PASS: "should verify GET request to “/hash” endpoint without Header name."
+
+PASS: "should verify POST request to  “/hash” endpoint  without Header name."
+
+
+
+###Functional testing (POSTMAN)
+FAIL: "should verify POST request to  “/hash” endpoint accepts a password and return a job identifier."
+Expected: response.statusCode = 200; response.body: jobIdentifier
+Actual result   response.statusCode =400; response.body = Malformed Input
+
+PASS: "should verify POST request to  “/hash” endpoint accepts a password and return a job identifier."
+*** works only when Request Headers key ==Content-Length
+
+FAIL: "should verify timing response for job identifier from POST request to /hash endpoint"
+ActualTimingRange=[ "5003.6 ms", "5008.9 ms","5003.2 ms","5009.40 ms"]. Note* need to define "immediately" from AC
+
+FAIL: "should verify POST request to  “/hash” endpoint with incorrect value parameters are not allowed."
+Expected: response.statusCode = 400; 
+Actual result   response.statusCode =200; response.body = jobIdentifier which generates password hash  and user able to retrieve through GET request 
+
+PASS: "should verify during software shutdown process it  should allow any in-flight password hashing to complete"
+
+
